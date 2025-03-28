@@ -1,0 +1,191 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Base colors */
+    --background: 240 24% 96%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 240 24% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 240 24% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    /* Gaming theme - Light mode */
+    --gaming-primary: 255 91% 64%;     /* Electric blue: #4D74FF */
+    --gaming-secondary: 270 95% 75%;   /* Vivid purple: #9E6AFF */
+    --gaming-accent: 326 100% 60%;     /* Neon pink: #FF338D */
+    --gaming-highlight: 135 94% 65%;   /* Bright green: #44FF91 */
+    --gaming-muted: 240 10% 70%;       /* Soft gray: #B3B5C6 */
+    --gaming-background: 240 24% 96%;  /* Light gray-blue: #F1F2F8 */
+    --gaming-foreground: 240 60% 10%;  /* Dark blue-gray: #171B2E */
+    --gaming-card: 240 24% 100%;       /* White with slight blue: #FCFCFF */
+    --gaming-card-hover: 240 30% 98%;  /* Slightly darker than card: #F7F8FF */
+
+    /* Sidebar colors */
+    --sidebar-background: 240 24% 96%;
+    --sidebar-foreground: 240 60% 10%;
+    --sidebar-primary: 255 91% 64%;
+    --sidebar-primary-foreground: 240 24% 100%;
+    --sidebar-accent: 240 24% 96%;
+    --sidebar-accent-foreground: 255 91% 64%;
+    --sidebar-border: 214.3 31.8% 91.4%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* Base colors */
+    --background: 240 20% 3.9%;
+    --foreground: 0 0% 93%;
+
+    --card: 240 17% 8%;
+    --card-foreground: 0 0% 93%;
+
+    --popover: 240 17% 8%;
+    --popover-foreground: 0 0% 93%;
+
+    --primary: 0 0% 93%;
+    --primary-foreground: 240 10% 3.9%;
+
+    --secondary: 240 10% 13%;
+    --secondary-foreground: 0 0% 93%;
+
+    --muted: 240 10% 13%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 240 10% 13%;
+    --accent-foreground: 0 0% 93%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 93%;
+
+    --border: 240 10% 13%;
+    --input: 240 10% 13%;
+    --ring: 240 5% 65%;
+
+    /* Gaming theme - Dark mode (updated for a more professional look) */
+    --gaming-primary: 217 80% 60%;      /* Professional blue: #3A7BDC */
+    --gaming-secondary: 262 60% 55%;    /* Refined purple: #7C53CF */
+    --gaming-accent: 326 70% 50%;       /* Deep rose: #C42B6B */
+    --gaming-highlight: 145 65% 45%;    /* Forest green: #289B63 */
+    --gaming-muted: 240 10% 40%;        /* Dark gray: #5A5D6E */
+    --gaming-background: 225 15% 8%;    /* Very dark blue-gray: #121620 */
+    --gaming-foreground: 220 10% 90%;   /* Light gray-blue: #E8EBF2 */
+    --gaming-card: 220 15% 11%;         /* Dark blue-gray: #1A1F2C */
+    --gaming-card-hover: 220 15% 14%;   /* Slightly lighter than card: #222835 */
+
+    /* Sidebar colors */
+    --sidebar-background: 222 15% 10%;
+    --sidebar-foreground: 220 10% 90%;
+    --sidebar-primary: 217 80% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 15% 14%;
+    --sidebar-accent-foreground: 217 80% 60%;
+    --sidebar-border: 222 15% 15%;
+    --sidebar-ring: 217 80% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-gaming-background text-gaming-foreground transition-colors duration-300;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gaming-muted/50 rounded-full hover:bg-gaming-muted;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-gaming-card/80 backdrop-blur-md border border-white/10 shadow-lg;
+  }
+  
+  .hover-scale {
+    @apply transition-transform duration-200 hover:scale-105;
+  }
+  
+  .btn-glow {
+    @apply relative overflow-hidden;
+  }
+  
+  .btn-glow::after {
+    @apply content-[''] absolute top-0 left-0 right-0 bottom-0 bg-white/20 opacity-0 transition-opacity duration-300;
+  }
+  
+  .btn-glow:hover::after {
+    @apply opacity-100;
+  }
+  
+  .game-card {
+    @apply relative overflow-hidden rounded-xl transition-all duration-300;
+  }
+  
+  .game-card:hover {
+    @apply shadow-lg shadow-gaming-primary/20 transform scale-[1.02];
+  }
+  
+  .neon-border {
+    @apply border border-transparent relative;
+  }
+  
+  .neon-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: linear-gradient(
+      to right, 
+      hsl(var(--gaming-primary)), 
+      hsl(var(--gaming-secondary)), 
+      hsl(var(--gaming-accent))
+    );
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
